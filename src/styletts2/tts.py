@@ -20,6 +20,7 @@ np.random.seed(0)
 
 from txtsplit import txtsplit
 import yaml
+import re
 
 from . import models
 from . import utils
@@ -66,7 +67,7 @@ def segment_text(text):
 
 
 class StyleTTS2:
-    def __init__(self, model_checkpoint_path=None, config_path=None, phoneme_converter='gruut'):
+    def __init__(self, model_checkpoint_path=None, config_path=None, phoneme_converter='espeak'):
         self.model = None
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.phoneme_converter = PhonemeConverterFactory.load_phoneme_converter(phoneme_converter)
